@@ -1,0 +1,356 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #f0f4f8, #d9e2ec);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.bloque-principal {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.tabs {
+  display: flex;
+  width: 100%;
+  border-radius: 1.2rem 1.2rem 0 0;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  background-color: white;
+  color: #444;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.tab:first-child {
+  border-top-left-radius: 1.2rem;
+}
+
+.tab:last-child {
+  border-top-right-radius: 1.2rem;
+}
+
+.tab.activa {
+  background-color: #007acc;
+  color: white;
+}
+
+.contenedor {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 0 0 1.2rem 1.2rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+h1 {
+  margin-top: 2rem;
+  font-size: 2rem;
+  text-align: center;
+  color: #222;
+}
+
+.campo {
+  position: relative; 
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+label {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+input,
+select {
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.8rem;
+  background: #fdfdfd;
+  color: #222;
+}
+
+#calcular {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background: #007acc;
+  color: white;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+#calcular:hover {
+  background: #005fa3;
+}
+
+#resultado {
+  margin-top: 1.8rem;
+  font-size: 1.4rem;
+  color: #333;
+  text-align: center;
+}
+
+.fila-modo {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+#modo-boton {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+#modo-boton:hover {
+  transform: scale(1.2);
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+body.oscuro,
+html.oscuro body {
+  background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+}
+
+body.oscuro .contenedor,
+html.oscuro .contenedor,
+body.oscuro .tabs,
+html.oscuro .tabs {
+  background-color: #2c2c2c;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+body.oscuro .tab,
+html.oscuro .tab {
+  background-color: #2c2c2c;
+  color: #ccc;
+}
+
+body.oscuro .tab.activa,
+html.oscuro .tab.activa {
+  background-color: #007acc;
+  color: white;
+}
+
+body.oscuro h1,
+html.oscuro h1,
+body.oscuro label,
+html.oscuro label,
+body.oscuro #resultado,
+html.oscuro #resultado {
+  color: #eee;
+}
+
+body.oscuro input,
+html.oscuro input,
+body.oscuro select,
+html.oscuro select {
+  background: #444;
+  color: #f0f0f0;
+  border: 1px solid #666;
+}
+
+body.oscuro #calcular,
+html.oscuro #calcular {
+  background-color: #007acc;
+}
+
+body.oscuro #calcular:hover,
+html.oscuro #calcular:hover {
+  background-color: #005fa3;
+}
+
+body.oscuro #modo-boton,
+html.oscuro #modo-boton {
+  color: #f0f0f0;
+}
+
+.sugerencias {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  font-size: 1.1rem;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 0 0 0.8rem 0.8rem;
+  display: none;
+  top: 100%;
+  left: 0;
+}
+
+.sugerencias li {
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.sugerencias li:hover {
+  background-color: #eee;
+}
+
+body.oscuro .sugerencias,
+html.oscuro .sugerencias {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  border-color: #444;
+}
+
+body.oscuro .sugerencias li:hover,
+html.oscuro .sugerencias li:hover {
+  background-color: #3a3a3a;
+}
+
+.selector-idioma {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.selector-idioma label {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.selector-idioma select {
+  padding: 0.4rem 0.8rem;
+  font-size: 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #222;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body.oscuro .selector-idioma label {
+  color: #f0f0f0;
+}
+
+body.oscuro .selector-idioma select {
+  background-color: #444;
+  color: #f0f0f0;
+  border-color: #666;
+}
+
+.fila-modo {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.idioma-wrapper select {
+  font-size: 1rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+}
+
+body.oscuro .idioma-wrapper select {
+  background-color: #444;
+  color: #f0f0f0;
+  border: 1px solid #666;
+}
+
+.fila-superior {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+#modo-boton {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+#modo-boton:hover {
+  transform: scale(1.2);
+}
+
+body.oscuro #modo-boton {
+  color: #f0f0f0;
+}
+
+.idioma-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.idioma-wrapper select {
+  font-size: 1rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.6rem;
+  border: 1px solid #ccc;
+  background: #fff;
+  color: #222;
+  cursor: pointer;
+}
+
+body.oscuro .idioma-wrapper select {
+  background-color: #444;
+  color: #f0f0f0;
+  border: 1px solid #666;
+}

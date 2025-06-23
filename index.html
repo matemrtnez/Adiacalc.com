@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coeficiente adiabático</title>
+  <script>
+    if (localStorage.getItem("modoOscuro") === "true") {
+      document.documentElement.classList.add("oscuro");
+    }
+  </script>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="bloque-principal">
+
+    <div class="tabs">
+      <button class="tab activa" data-modo="ideal" id="pestana-ideal">Gas ideal</button>
+      <button class="tab" data-modo="real" id="pestana-real">Gas real</button>
+    </div>
+
+    <div class="contenedor">
+
+      <div class="fila-superior">
+        <button id="modo-boton">🌙</button>
+        <div class="idioma-wrapper">
+          <label for="idioma">🌐</label>
+          <select id="idioma">
+            <option value="es">Es</option>
+            <option value="en">En</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cabecera">
+        <h1>Calculadora online de coeficiente adiabático</h1>
+      </div>
+
+      <div class="campo">
+        <label for="gas">Sustancia</label>
+        <input type="text" id="gas" placeholder="Ej. aire, CO₂...">
+        <ul id="lista-sugerencias" class="sugerencias"></ul>
+      </div>
+
+      <div class="campo">
+        <label for="temperatura">Temperatura</label>
+        <input type="number" id="temperatura" placeholder="Ej. 300" />
+        <select id="unidad">
+          <option value="K">K</option>
+          <option value="C">°C</option>
+          <option value="F">°F</option>
+        </select>
+      </div>
+
+      <button id="calcular">Calcular</button>
+      <div id="resultado"></div>
+    </div>
+  </div>
+
+  <script src="sustancias.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
