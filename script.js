@@ -3,6 +3,11 @@ let modo = "ideal";
 
 tabs.forEach(tab => {
   tab.addEventListener("click", () => {
+    if (tab.dataset.modo === "real") {
+      alert(idiomaActual === "es" ? "La opción de gas real estará disponible próximamente." : "Real gas option coming soon.");
+      return;
+    }
+
     tabs.forEach(t => t.classList.remove("activa"));
     tab.classList.add("activa");
     modo = tab.dataset.modo;
