@@ -194,13 +194,13 @@ function convertirCoef(valor) {
   return parseFloat(valor.replace("D", "E").replace(/(?<=\d)-$/, "E-"));
 }
 
-function calcularCpCvGamma(simbolo, T, datos) {
+function calcularCpCvGamma(simbolo, T_K, datos) {
   for (const entrada of datos) {
     if (entrada.simbolo === simbolo) {
       const tmin = parseFloat(entrada.t_min);
       const tmax = entrada.t_max === "0000.00" ? Infinity : parseFloat(entrada.t_max);
 
-      if (T >= tmin && T <= tmax) {
+      if (T_K >= tmin && T_K <= tmax) {
         const a1 = convertirCoef(entrada.a1);
         const a2 = convertirCoef(entrada.a2);
         const a3 = convertirCoef(entrada.a3);
@@ -209,7 +209,7 @@ function calcularCpCvGamma(simbolo, T, datos) {
         const a6 = convertirCoef(entrada.a6);
         const a7 = convertirCoef(entrada.a7);
 
-        const cp_R = a1*T**-2 + a2*T**-1 + a3 + a4*T + a5*T**2 + a6*T**3 + a7*T**4;
+        const cp_R = a1*T_K**-2 + a2*T_K**-1 + a3 + a4*T_K + a5*T_K**2 + a6*T_K**3 + a7*T_K**4;
         const cp = cp_R * R;
         const cv = cp - R;
         const gamma = cp / cv;
@@ -224,16 +224,27 @@ function calcularCpCvGamma(simbolo, T, datos) {
 document.getElementById("calcular").addEventListener("click", () => {
   const gas = document.getElementById("gas").value.trim();
   const T = parseFloat(document.getElementById("temperatura").value);
+  const unidad = document.getElementById("unidad").value;
 
   if (!gas || isNaN(T)) {
-    alert("Introduce un gas válido y una temperatura.");
+    alert(idiomaActual === "es" ? "Introduce un gas válido y una temperatura." : "Please enter a valid gas and temperature.");
     return;
   }
 
-  const resultado = calcularCpCvGamma(gas, T, datosCoeficientes);
+  let T_K = T;
+  if (unidad === "°C") {
+    T_K = T + 273.15;
+  } else if (unidad === "°F") {
+    T_K = (T - 32) * 5 / 9 + 273.15;
+  }
+
+  const resultado = calcularCpCvGamma(gas, T_K, datosCoeficientes);
 
   if (!resultado) {
-    document.getElementById("resultado").innerHTML = " No hay datos disponibles para esa temperatura.";
+    document.getElementById("resultado").innerHTML =
+  idiomaActual === "es"
+    ? "No hay datos disponibles para esa temperatura."
+    : "No data available for that temperature.";
     return;
   }
 
