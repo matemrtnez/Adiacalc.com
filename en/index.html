@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Adiabatic Coefficient (γ) Calculator | Cp & Cv for Ideal Gases – AdiaCalc</title>
+
+  <meta name="description"
+        content="Online calculator for the adiabatic coefficient (γ), Cp and Cv of ideal gases. Supports temperatures in Kelvin, Celsius and Fahrenheit."/>
+
+  <meta name="keywords"
+        content="adiabatic coefficient calculator, heat capacity ratio, Cp Cv calculator, ideal gases, thermodynamics, online calculator, free"/>
+
+  <link rel="canonical" href="https://adiacalc.com/en/" />
+  <link rel="alternate" hreflang="en" href="https://adiacalc.com/en/" />
+  <link rel="alternate" hreflang="es" href="https://adiacalc.com/" />
+
+  <script>
+    if (localStorage.getItem("modoOscuro") === "true") {
+      document.documentElement.classList.add("oscuro");
+    }
+  </script>
+  <link rel="stylesheet" href="estilos.css" />
+</head>
+<body>
+  <div class="bloque-principal">
+
+    <div class="cabecera">
+      <h1>Online Adiabatic Coefficient (γ) Calculator for Ideal Gases</h1>
+      <p>
+        Calculate the adiabatic coefficient (γ), as well as heat capacities Cp and Cv, for a wide range of gases at any temperature. Easily switch between Kelvin, °C and °F.
+      </p>
+    </div>
+    
+    <div class="tabs">
+      <button class="tab activa" data-modo="ideal" id="pestana-ideal">Ideal Gas</button>
+      <button class="tab" data-modo="real" id="pestana-real">Real Gas</button>
+    </div>
+
+    <div class="contenedor">
+
+      <div class="fila-superior">
+        <button id="modo-boton">🌙</button>
+        <div class="idioma-wrapper">
+          <label for="idioma">🌐</label>
+          <select id="idioma">
+            <option value="es">Es</option>
+            <option value="en">En</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="cabecera">
+        <h1>Online heat capacity ratio calculator</h1>
+      </div>
+
+      <div class="campo">
+        <label for="gas">Substance</label>
+        <input type="text" id="gas" placeholder="Ej. air, CO₂...">
+        <ul id="lista-sugerencias" class="sugerencias"></ul>
+      </div>
+
+      <div class="campo">
+        <label for="temperatura">Temperature</label>
+        <input type="number" id="temperatura" placeholder="Ex. 300" />
+        <select id="unidad">
+          <option value="K">K</option>
+          <option value="C">°C</option>
+          <option value="F">°F</option>
+        </select>
+      </div>
+
+      <button id="calcular">Calculate</button>
+      <div id="resultado"></div>
+    </div>
+  </div>
+
+  <script src="sustancias.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
