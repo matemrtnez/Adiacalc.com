@@ -169,7 +169,7 @@ selectorIdioma.addEventListener("change", () => {
 
 let datosCoeficientes = [];
 
-fetch("datos_sustancias.json")
+fetch("/datos_sustancias.json")
   .then(res => res.json())
   .then(data => {
     datosCoeficientes = data;
@@ -177,12 +177,14 @@ fetch("datos_sustancias.json")
   })
   .catch(err => console.error("Error al cargar coeficientes:", err));
 
-
-// Aplicar idioma y modo oscuro al cargar
 window.addEventListener("DOMContentLoaded", () => {
-  const idiomaGuardado = localStorage.getItem("idioma") || "es";
+  const idiomaGuardado =
+    localStorage.getItem("idioma")
+    || (navigator.language.startsWith("en") ? "en" : "es");
+
   selectorIdioma.value = idiomaGuardado;
   aplicarIdioma(idiomaGuardado);
+});
 
   const guardado = localStorage.getItem("modoOscuro") === "true";
   aplicarModoOscuro(guardado);
