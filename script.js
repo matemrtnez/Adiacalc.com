@@ -231,16 +231,14 @@ document.getElementById("calcular").addEventListener("click", () => {
     return;
   }
 
-  let T_K = T;
-  if (unidad === "°C") {
-    T_K = T + 273.15;
-  } 
-  if (unidad === "K") {
-    T_K = T;
-  }
-  else if (unidad === "°F") {
-    T_K = (T - 32) * 5 / 9 + 273.15;
-  }
+let T_K;
+if (unidad === "°C") {
+  T_K = T + 273.15;
+} else if (unidad === "°F") {
+  T_K = (T - 32) * 5 / 9 + 273.15;
+} else {
+  T_K = T;
+}
 
   const resultado = calcularCpCvGamma(gas, T_K, datosCoeficientes);
 
