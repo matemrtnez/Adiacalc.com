@@ -169,7 +169,7 @@ selectorIdioma.addEventListener("change", () => {
 
 let datosCoeficientes = [];
 
-fetch("/datos_sustancias.json")
+fetch("datos_sustancias.json")
   .then(res => res.json())
   .then(data => {
     datosCoeficientes = data;
