@@ -177,14 +177,12 @@ fetch("datos_sustancias.json")
   })
   .catch(err => console.error("Error al cargar coeficientes:", err));
 
-window.addEventListener("DOMContentLoaded", () => {
-  const idiomaGuardado =
-    localStorage.getItem("idioma")
-    || (navigator.language.startsWith("en") ? "en" : "es");
 
+// Aplicar idioma y modo oscuro al cargar
+window.addEventListener("DOMContentLoaded", () => {
+  const idiomaGuardado = localStorage.getItem("idioma") || "es";
   selectorIdioma.value = idiomaGuardado;
   aplicarIdioma(idiomaGuardado);
-});
 
   const guardado = localStorage.getItem("modoOscuro") === "true";
   aplicarModoOscuro(guardado);
