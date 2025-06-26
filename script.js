@@ -29,6 +29,17 @@ botonModo.addEventListener("click", () => {
 });
 
 let idiomaActual = localStorage.getItem("idioma") || "es";
+
+function obtenerSimbolo(nombre) {
+  const normalizado = normalizar(nombre);
+  const s = sustancias.find(s =>
+    normalizar(s.simbolo) === normalizado ||
+    normalizar(s["es"]) === normalizado ||
+    normalizar(s["en"]) === normalizado
+  );
+  return s ? s.simbolo : null;
+}
+
 const inputGas = document.getElementById("gas");
 const lista = document.getElementById("lista-sugerencias");
 
