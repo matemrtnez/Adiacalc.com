@@ -180,7 +180,7 @@ selectorIdioma.addEventListener("change", () => {
 
 let datosCoeficientes = [];
 
-fetch("datos_sustancias.json")
+fetch("../datos_sustancias.json")
   .then(res => res.json())
   .then(data => {
     datosCoeficientes = data;
@@ -199,7 +199,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   const guardado = localStorage.getItem("modoOscuro") === "true";
   aplicarModoOscuro(guardado);
-});
+;
 
 const R = 8.314462618;
 
@@ -254,14 +254,14 @@ document.getElementById("calcular").addEventListener("click", () => {
     return;
   }
 
-let T_K;
-if (unidad === "°C") {
-  T_K = T + 273.15;
-} else if (unidad === "°F") {
-  T_K = (T - 32) * 5 / 9 + 273.15;
-} else {
-  T_K = T;
-}
+  let T_K;
+  if (unidad === "°C") {
+    T_K = T + 273.15;
+  } else if (unidad === "°F") {
+    T_K = (T - 32) * 5 / 9 + 273.15;
+  } else {
+    T_K = T;
+  }
 
   const resultado = calcularCpCvGamma(gas, T_K, datosCoeficientes);
 
