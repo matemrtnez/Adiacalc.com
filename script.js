@@ -233,7 +233,17 @@ function calcularCpCvGamma(simbolo, T_K, datos) {
 }
 
 document.getElementById("calcular").addEventListener("click", () => {
-  const gas = document.getElementById("gas").value.trim();
+  const nombre = document.getElementById("gas").value.trim();
+  
+  const gas = obtenerSimbolo(nombre);
+  
+  if (!gas) {
+    alert(idiomaActual === "es"
+      ? "No se reconoce el nombre del gas."
+      : "Gas name not recognized.");
+    return;
+  }
+
   const T = parseFloat(document.getElementById("temperatura").value);
   const unidad = document.getElementById("unidad").value;
 
